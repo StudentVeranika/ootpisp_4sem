@@ -1,0 +1,53 @@
+cmake_minimum_required(VERSION 3.16)
+project(ShapesLibrary)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
+find_package(Qt5 REQUIRED COMPONENTS Widgets Core Gui)
+
+# Разделяемая библиотека
+add_library(ShapesLib SHARED
+    shapes/shape.cpp
+    shapes/polygon.cpp
+    shapes/ellipse.cpp
+    shapes/composite_shape.cpp
+    factory/shape_factory.cpp
+    factory/shape_loader.cpp
+)
+
+target_compile_definitions(ShapesLib PRIVATE SHAPESLIB_LIBRARY)
+
+target_include_directories(ShapesLib PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/shapes
+    ${CMAKE_CURRENT_SOURCE_DIR}/factory
+)
+
+target_link_libraries(ShapesLib 
+    Qt5::Widgets 
+    Qt5::Core 
+    Qt5::Gui
+)
+
+# Приложение
+add_executable(ShapesEditor
+    app/main.cpp
+    app/main_window.cpp
+)
+
+target_include_directories(ShapesEditor PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/shapes
+    ${CMAKE_CURRENT_SOURCE_DIR}/factory
+    ${CMAKE_CURRENT_SOURCE_DIR}/app
+)
+
+target_link_libraries(ShapesEditor
+    Qt5::Widgets
+    Qt5::Core
+    Qt5::Gui
+    ShapesLib
+)
