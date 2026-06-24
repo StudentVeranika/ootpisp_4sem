@@ -1,0 +1,4 @@
+/home/user/Projects/lr4/build/CMakeFiles/ShapesEditor.dir
+/home/user/Projects/lr4/build/CMakeFiles/edit_cache.dir
+/home/user/Projects/lr4/build/CMakeFiles/rebuild_cache.dir
+/home/user/Projects/lr4/build/CMakeFiles/ShapesEditor_autogen.dir

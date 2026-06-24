@@ -1,0 +1,2 @@
+# Hashes of file build rules.
+d00811f46ef5ccf4d9b83a3d5a0a2702 CMakeFiles/ShapesEditor_autogen
